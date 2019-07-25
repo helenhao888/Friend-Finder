@@ -5,7 +5,7 @@ var path = require("path");
 module.exports = function(app){
 
   //Handle the html get request
-  app.get("/friends",function(req,res){
+  app.get("/survey",function(req,res){
      //Transfers the survey.html file at the given path. 
       res.sendFile(path.join(__dirname,"../public/survey.html"));
   })

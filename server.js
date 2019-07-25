@@ -1,4 +1,5 @@
 var express = require("express");
+var path = require("path");
 //Creating an express server 
 var app = express();
 
@@ -9,6 +10,9 @@ var PORT = process.env.PORT || 8080;
 app.use(express.urlencoded({extended:true}));
 // It parses incoming requests with JSON payloads and is based on body-parser.
 app.use(express.json());
+// GET app/public/style.css 
+app.use(express.static(path.join(__dirname,"/app/public")));
+app.use(express.static(path.join(__dirname,"/app/data")))
 
 // ROUTER
 // The below points our server to a series of "route" files.

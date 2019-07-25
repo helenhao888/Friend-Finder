@@ -10,7 +10,7 @@ var PORT = process.env.PORT || 8080;
 app.use(express.urlencoded({extended:true}));
 // It parses incoming requests with JSON payloads and is based on body-parser.
 app.use(express.json());
-// GET app/public/style.css 
+// GET files under app/public/ and app/data/
 app.use(express.static(path.join(__dirname,"/app/public")));
 app.use(express.static(path.join(__dirname,"/app/data")))
 

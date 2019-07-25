@@ -1,5 +1,5 @@
 $(".submitBtn").on("click",function(event){
-    console.log("click submit");
+    
     event.preventDefault();
     var scoreArr=[];
 
@@ -20,11 +20,9 @@ $(".submitBtn").on("click",function(event){
         }
 
         $.post("api/friends",newSurvey,function(data){
-            console.log("response data",data);
+            
             if (data){
                 
-                console.log("name",data.name);
-                console.log("photo",data.photo);
                 createMatchModal(data.name,data.photo);
                 
             }
@@ -81,12 +79,25 @@ function createMatchModal(name,photo){
     $(".modal-body-match").empty();
 
     var nameH3=$("<h3>").text(name);
-    var photoDiv=$("<img>").attr("src",photo);
-    console.log("name h3",nameH3);
-    // console.log("photo",photoDiv);
+    var photoDiv=$("<img>").attr("src",photo);    
 
     $(".modal-body-match").append(nameH3,photoDiv);        
     $('#modalFriends').modal("show");
-    //reset
 
-}
+    $('#modalFriends'). on('hidden.bs.modal', function (){
+        //reset all input fields
+        $("#select01").val("Choose...");
+        $("#select02").val("Choose...");
+        $("#select03").val("Choose...");
+        $("#select04").val("Choose...");
+        $("#select05").val("Choose...");
+        $("#select06").val("Choose...");
+        $("#select07").val("Choose...");
+        $("#select08").val("Choose...");
+        $("#select09").val("Choose...");
+        $("#select10").val("Choose...");
+        $("#name").val("");
+        $("#imgLink").val("");
+    })
+
+}   
